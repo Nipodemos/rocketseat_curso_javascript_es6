@@ -1,24 +1,40 @@
+const arr = [1,2,3,4,5,7,10,13];
 
 /**
- * Explicando const
+ * map:
+ * ele entra em cada um dos items no array e  executa uma function sobre ele.
+ * No final é retornado uma nova array com as  * modificações feitas
  */
-const a = 1;
-
-a = 3 // ERRO, NÃO FAÇA ISSO
-
-const usuario = {nome: 'Alan'};
-usuario.nome = 'Cleiton'; // PODE FAZER, é chamado de mutar uma variável
+const novoArray = arr.map(function(item, index){
+    return item * 2;
+})
+console.log(novoArray);
 
 
 /**
- * Explicando let
+ * reduce:
+ * basicamente é uma função para juntar todos os valores dentro de uma array de números
  */
-function test(x){
-    let y = 2;
-    if (x > 5) {
-        z = 1; // a function não tem acesso a essa variável, já que ela foi criada dentro do if
-        console.log(x,y);
-    }
-}
+const sum = arr.reduce(function (anterior, atual, index){
+    return anterior + atual;
+})
+console.log('sum: '+sum);
 
-test(10);
+/**
+ * filter:
+ * filtrar uma array e retornar só os items que atendem a uma condição especifica imposta por você
+ */
+const filter = arr.filter(function(item){
+    return item % 2 === 0;
+})
+console.log(filter);
+
+
+/**
+ * find:
+ * encontrar um item específico na lista que atenda a condição imposta
+ */
+const find = arr.find(function(item){
+    return item === 4;
+})
+console.log(find);

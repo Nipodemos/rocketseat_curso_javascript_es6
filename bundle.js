@@ -1,30 +1,40 @@
 "use strict";
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
+var arr = [1, 2, 3, 4, 5, 7, 10, 13];
 /**
- * Explicando const
- */
-var a = 1;
-a = (_readOnlyError("a"), 3); // ERRO, NÃO FAÇA ISSO
-
-var usuario = {
-  nome: 'Alan'
-};
-usuario.nome = 'Cleiton'; // PODE FAZER, é chamado de mutar uma variável
-
-/**
- * Explicando let
+ * map:
+ * ele entra em cada um dos items no array e  executa uma function sobre ele.
+ * No final é retornado uma nova array com as  * modificações feitas
  */
 
-function test(x) {
-  var y = 2;
+var novoArray = arr.map(function (item, index) {
+  return item * 2;
+});
+console.log(novoArray);
+/**
+ * reduce:
+ * basicamente é uma função para juntar todos os valores dentro de uma array de números
+ */
 
-  if (x > 5) {
-    z = 1; // a function não tem acesso a essa variável, já que ela foi criada dentro do if
+var sum = arr.reduce(function (anterior, atual, index) {
+  return anterior + atual;
+});
+console.log('sum: ' + sum);
+/**
+ * filter:
+ * filtrar uma array e retornar só os items que atendem a uma condição especifica imposta por você
+ */
 
-    console.log(x, y);
-  }
-}
+var filter = arr.filter(function (item) {
+  return item % 2 === 0;
+});
+console.log(filter);
+/**
+ * find:
+ * encontrar um item específico na lista que atenda a condição imposta
+ */
 
-test(10);
+var find = arr.find(function (item) {
+  return item === 4;
+});
+console.log(find);
