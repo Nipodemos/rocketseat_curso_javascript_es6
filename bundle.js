@@ -1,136 +1,30 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/* Começo do ensinamento*/
-var List =
-/*#__PURE__*/
-function () {
-  function List() {
-    _classCallCheck(this, List);
-
-    this.data = [];
-  }
-
-  _createClass(List, [{
-    key: "add",
-    value: function add(data) {
-      this.data.push(data);
-    }
-  }]);
-
-  return List;
-}();
-
-var TodoList =
-/*#__PURE__*/
-function (_List) {
-  _inherits(TodoList, _List);
-
-  function TodoList() {
-    var _this;
-
-    _classCallCheck(this, TodoList);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoList).call(this));
-    _this.usuario = 'Alan';
-    return _this;
-  }
-
-  _createClass(TodoList, [{
-    key: "mostraUsuario",
-    value: function mostraUsuario() {
-      console.log(this.usuario);
-    }
-  }]);
-
-  return TodoList;
-}(List);
-
-var minhaLista = new TodoList();
-
-document.getElementById('novotodo').onclick = function () {
-  minhaLista.add('Novo Todo');
-};
-/*Método estático
-Basicamente é algum método de uma classe que vc não precisa instanciar pra poder acessar.
-Normalmente vc faz:
-
-var minhaClasse = Classe();
-minhaClasse.metodo();
-
-mas com métodos estáticos, vc pode invocar direto, sem inicializar variável:
-
-Classe.metodo();
-
-*/
-
-
-var TodoListEstatica =
-/*#__PURE__*/
-function () {
-  function TodoListEstatica() {
-    _classCallCheck(this, TodoListEstatica);
-
-    this.todos = [];
-  }
-  /**
-   * Lembrete: métodos estáticos não sabem de nada do resto da classe
-   * então por exmeplo, esse addTodo na verdade não sabe da existencia do array todos
-   * então esse código gera um erro e não funciona
-   */
-
-
-  _createClass(TodoListEstatica, null, [{
-    key: "addTodo",
-    value: function addTodo() {
-      this.todos.push('Novo Todo');
-      console.log;
-    }
-  }]);
-
-  return TodoListEstatica;
-}();
-
-TodoList.addTodo();
-TodoList.addTodo();
-TodoList.addTodo();
-TodoList.addTodo();
 /**
- * Exemplo de método abstrato funcional
-*/
+ * Explicando const
+ */
+var a = 1;
+a = (_readOnlyError("a"), 3); // ERRO, NÃO FAÇA ISSO
 
-var Matematica =
-/*#__PURE__*/
-function () {
-  function Matematica() {
-    _classCallCheck(this, Matematica);
+var usuario = {
+  nome: 'Alan'
+};
+usuario.nome = 'Cleiton'; // PODE FAZER, é chamado de mutar uma variável
+
+/**
+ * Explicando let
+ */
+
+function test(x) {
+  var y = 2;
+
+  if (x > 5) {
+    z = 1; // a function não tem acesso a essa variável, já que ela foi criada dentro do if
+
+    console.log(x, y);
   }
+}
 
-  _createClass(Matematica, null, [{
-    key: "soma",
-    value: function soma(a, b) {
-      return a + b;
-    }
-  }]);
-
-  return Matematica;
-}();
-
-console.log(Matematica.soma(1, 3));
+test(10);
