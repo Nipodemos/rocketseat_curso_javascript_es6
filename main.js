@@ -1,47 +1,29 @@
-const arr = [1,2,3,4,5,7,10,13];
 
+function soma (a, b) {
+    return a + b;
+}
 /**
- * primeira forma: retire a palavra function e coloque um sinal de igual e maior antes do abre-chaves 
+ * se vc chamar a função soma e colocar apenas um argumento, vai rolar um erro
  */
-const novoArray = arr.map((item)=>{
-    return item * 2;
-})
-console.log(novoArray);
 
+soma(1); // erro "NaN" => Not a Number, porque o parametro b está undefined
+soma(); // erro "NaN" => Not a Number denovo, porque os dois parametros estão undefined
 
 /**
- * segunda forma: se o método tem só um parâmetro, vc pode tirar os parenteses antes da seta
+ * com valores padrão:
  */
-const novoArray2 = arr.map( item => {
-    return item * 2;
-})
-console.log(novoArray);
+function soma2(a = 3, b = 6) {
+    return a + b;
+}
+
+soma2(); // vai retornar 9, porque agora se vc não colocar argumentos, vai ter um valor padrão atribuido
+soma2(1); // vai retornar 7, pelo mesmo motivo
+soma2(1,4); // vai retornar 5, porque a prioridade é o argumento que é passado, os valores padrão só vão
+// ser usados se não tiver sido passado argumentos
 
 
 /**
- * terceira forma: se o conteúdo do método é só uma linha,
- * e essa linha for pra retornar algum valor,
- * tire o abre-chave e fecha-chave e o "return"
- * 
- * Observação do Nipodemos: pra te falar a verdade, acho que ficou limpo até demais a sintaxe,
- * fica até meio dificil perceber de cara que é uma função anonima com parametro item que retorna item * 2 
- */ 
-const novoArray3 = arr.map(item => item * 2);
-console.log(novoArray);
-
-
-/**
- * detalhe:
- * vc pode retornar normalmente strings, numeros, arrays e talz, mas quando vc for retornar um objeto, tem uma     sintaxe diferente
- * isso é porque quando vc coloca o abre-chaves ali, ele já acha que é um método que tá seguindo a segunda forma
- * que eu citei umas linhas acima
+ * só uma curiosidade: essa função dá pra usar a arrow pra ficar menor e mais simples
  */
-const novoArray4 = arr.map(item => {nome: 'diego'}); //! ERRO, NÃO FAÇAM ISSO GENTE
-console.log(novoArray);
-/**
- * modo correto:
- * coloque parenteses ao redor do objeto
- */
-const novoArray5 = arr.map(item => ({nome: 'diego'}) ); //AGORA SIM TA CERTO
-console.log(novoArray);
 
+ const soma3 = (a = 3, b = 6) => a + b;
