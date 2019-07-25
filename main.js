@@ -1,29 +1,46 @@
-
-function soma (a, b) {
-    return a + b;
-}
-/**
- * se vc chamar a função soma e colocar apenas um argumento, vai rolar um erro
- */
-
-soma(1); // erro "NaN" => Not a Number, porque o parametro b está undefined
-soma(); // erro "NaN" => Not a Number denovo, porque os dois parametros estão undefined
-
-/**
- * com valores padrão:
- */
-function soma2(a = 3, b = 6) {
-    return a + b;
+const Usuario = {
+    nome: 'Diego',
+    idade:23,
+    endereco: {
+        cidade: 'RS',
+        estado: 'SC',
+    },
 }
 
-soma2(); // vai retornar 9, porque agora se vc não colocar argumentos, vai ter um valor padrão atribuido
-soma2(1); // vai retornar 7, pelo mesmo motivo
-soma2(1,4); // vai retornar 5, porque a prioridade é o argumento que é passado, os valores padrão só vão
-// ser usados se não tiver sido passado argumentos
+/**
+ * tendo como exemplo o objeto acima, se eu fosse pegar várias
+ * informações dele, as coisas podem ficar bem verbosas:
+ */
+const nome = usuario.nome;
+const idade = usuario.idade;
+const cidade = usuario.endereco.estado;
 
 
 /**
- * só uma curiosidade: essa função dá pra usar a arrow pra ficar menor e mais simples
+ * aí que entra a desestruturação:
+ * de certa forma é como declarar várias variaveis numa linha só
+ * a diferença é que ela pega o valor de um objeto, deixando mais limpo e intuitivo o código
+ */
+const { nome, idade, endereco: { cidade } } = usuario;
+
+console.log(nome);
+console.log(idade);
+console.log(cidade);
+
+
+/**
+ * voce pode também usar desestruturação nos parametros da função
+ * útil pra vc pegar já valores separados do objeto
+ * talvez fique até mais facil de entender na hora de ler o código
+ * ou não
  */
 
- const soma3 = (a = 3, b = 6) => a + b;
+ // versão sem desestruturação
+function mostraNome(usuario) {
+    console.log(usuario.nome);
+}
+
+// com a desestruturação
+function mostraNome2( {nome, idade} ) {
+    console.log(nome,idade);
+}
