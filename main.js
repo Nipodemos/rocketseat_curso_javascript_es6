@@ -1,11 +1,23 @@
-const nome = 'Alan';
+const nome = 'Diego';
 const idade = 23;
 
-// sem o template literal, vc precisa ficar concatenando
-// demais, isso é muito chato e feio e dificil de ler
-console.log("Meu nome é " + nome + " e tenho " + idade + " anos." );
+/**
+ * simples porém muito útil
+ * na hora que vc tiver definindo objetos, caso a
+ * key seja igual o value, vc pode omitir um dos dois
+ */
 
-// com o template literal, o visual fica muito mais limpo e
-// fácil de entender, fora que fica igual as outras
-// linguagens de programação
-console.log(`Meu nome é ${nome} e tenho ${idade} anos.`);
+//do jeito antigo e repetitivo fica assim:
+const usuario = {
+    nome: nome,
+    idade: idade,
+    empresa: 'Rocketseat',
+};
+
+
+// do jeito bom fica assim, sem repetição
+const usuario2 = {
+    nome,
+    idade,
+    empresa: 'Rocketseat',
+};

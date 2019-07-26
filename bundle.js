@@ -1,11 +1,22 @@
 "use strict";
 
-var nome = 'Alan';
-var idade = 23; // sem o template literal, vc precisa ficar concatenando
-// demais, isso é muito chato e feio e dificil de ler
+var nome = 'Diego';
+var idade = 23;
+/**
+ * simples porém muito útil
+ * na hora que vc tiver definindo objetos, caso a
+ * key seja igual o value, vc pode omitir um dos dois
+ */
+//do jeito antigo e repetitivo fica assim:
 
-console.log("Meu nome é " + nome + " e tenho " + idade + " anos."); // com o template literal, o visual fica muito mais limpo e
-// fácil de entender, fora que fica igual as outras
-// linguagens de programação
+var usuario = {
+  nome: nome,
+  idade: idade,
+  empresa: 'Rocketseat'
+}; // do jeito bom fica assim, sem repetição
 
-console.log("Meu nome \xE9 ".concat(nome, " e tenho ").concat(idade, " anos."));
+var usuario2 = {
+  nome: nome,
+  idade: idade,
+  empresa: 'Rocketseat'
+};
